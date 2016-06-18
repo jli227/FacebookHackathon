@@ -4,9 +4,9 @@
     var startTiming = null;
     var endTiming = null;
     var pressing = null;
-    var morseSignals = [];
     var running = null;
     var trainingWord = null;
+    var morseSignals = [];
 
     var morseDictionary = {
         A: ["dot", "elementSpace", "dash", "charSpace"],
@@ -64,6 +64,7 @@
     var mouseDown = function() {
         if (!pressing) {
             pressing = true;
+            document.getElementById('audio').play();
             startTiming = new Date();
             if (endTiming) {
                 var elapsed = Math.abs(startTiming - endTiming);
@@ -85,8 +86,9 @@
     };
 
     var mouseUp = function() {
-
         pressing = null;
+        document.getElementById('audio').pause();
+        document.getElementById('audio').currentTime = 0;
         endTiming = new Date();
         var elapsed = Math.abs(endTiming-startTiming);
         console.log("dot/dash:" + elapsed);
