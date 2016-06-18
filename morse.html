@@ -15,9 +15,12 @@
 
 		<h1>Morsel</h1>
 
+		<br/>
+
 		<div id="centered">
-			<div id="wordDiv">
-				<input id="trainingWord" type="text" placeholder="Training Word">
+			<div class="form-group">
+				<label for="trainingWord">Training Word:</label>
+				<input class="form-control form-fixed-width" id="trainingWord" type="text" placeholder="Training Word">
 				<button class="btn btn-primary" id="confirmWord">Confirm</button>
 			</div>
 
@@ -41,16 +44,16 @@
 		</div>
 
 		<div id ="canvasDiv">
-
 			<h3>Dots/Dashes</h3>
 			<canvas id="liveStreamCanvas"  width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
 
 			<h3>Overall Taps</h3>
 			<canvas id="myCanvas" width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
-
-			
-
 		</div>
+
+		<br/>
+		<br/>
+		<br/>
 
 		<table class="legend">
 			<tr>
@@ -84,7 +87,6 @@
 			<ul id ="log">
 
 			</ul>
-			
 		</div>
 		
 		

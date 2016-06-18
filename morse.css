@@ -54,7 +54,6 @@ body {
 	font-size: 12px;
 }
 
-
 #displayDiv {
 	text-align: center;
 }
@@ -64,23 +63,19 @@ body {
 	text-align: center;
 }
 
-#wordDiv {
-	text-align: center;
-}
-
 #letterDiv {
 	display: none;
 }
 
-input[type=text] {
-    width: 100px;
-    padding: 6px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #bfbfbf;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+/*input[type=text] {*/
+    /*width: 100px;*/
+    /*padding: 6px 10px;*/
+    /*margin: 8px 0;*/
+    /*display: inline-block;*/
+    /*border: 1px solid #bfbfbf;*/
+    /*border-radius: 4px;*/
+    /*box-sizing: border-box;*/
+/*}*/
 
 input:focus {
     outline:none;
@@ -148,4 +143,9 @@ table {
 td, th {
     padding: 5px;
     text-align: center;
+}
+
+.form-fixed-width {
+    width: 220px !important;
+    display: inline-block;
 }
