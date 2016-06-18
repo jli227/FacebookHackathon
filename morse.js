@@ -438,17 +438,7 @@
 
         
         console.log(this.signalArray);
-
-
-
-        for (var k = 0; k < numCS; k++) {
-
-
-        }
-        
-        
-        
-
+    
         
     };
 
