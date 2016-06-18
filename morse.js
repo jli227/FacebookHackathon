@@ -304,7 +304,7 @@
                     yPos = 20;
                 } else {
 
-                    yPos = 90;
+                    yPos = 80;
 
                 }
             }
