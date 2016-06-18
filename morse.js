@@ -65,6 +65,7 @@
         selection.removeAllRanges();
         selection.addRange(range);
         document.execCommand('copy');
+        selection.removeAllRanges();
     };
 
     var confirmWord = function() {
@@ -165,15 +166,11 @@
 
 
     var train = function() {
-
         clear();
-
         var trainingMorseCode = [];
-
         endTiming = null;
 
         for (var i = 0; i < trainingWord.length; i++) {
-
             var character = trainingWord.charAt(i);
             trainingMorseCode = trainingMorseCode.concat(morseDictionary[character]);
         }
