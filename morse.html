@@ -13,11 +13,14 @@
 	<body>
 		<audio id="audio" src="beep.wav"></audio>
 
-		<h1>Morsel</h1>
+		<h1><img src="tap.png" alt="Tap">Morsel</h1>
+
+		<br/>
 
 		<div id="centered">
-			<div id="wordDiv">
-				<input id="trainingWord" type="text" placeholder="Training Word">
+			<div class="form-group">
+				<label for="trainingWord">Training Word:</label>
+				<input class="form-control form-fixed-width" id="trainingWord" type="text" placeholder="Training Word">
 				<button class="btn btn-primary" id="confirmWord">Confirm</button>
 			</div>
 
@@ -26,59 +29,64 @@
 					<div class="btn btn-info" id="codeInput">Input</div>
 					<div id ="buttonDiv">
 
-						<button class="btn btn-primary" id="train">train</button>
-						<button id="test" disabled>test</button>
+						<button class="btn btn-primary" id="train">Train</button>
+						<button id="test" class="btn btn-success" disabled>Test</button>
 
 						<button id ="clear" class="btn btn-default">CLEAR</button>
 					</div>
 				</div>
-
-				<div id="letterDiv">
-					<legend class="Translated signals">Letters: </legend>
-					<textarea id="letter" rows="3" cols="25"></textarea>
-				</div> 
 			</div>
+
+			<div id="letterDiv">
+				<legend class="Translated signals">Letters: </legend>
+				<h2 id="letter" rows="3" cols="25"></h2>
+			</div> 
 		</div>
 
 		<div id ="canvasDiv">
+			<h3>Dots/Dashes</h3>
+			<canvas id="liveStreamCanvas"  width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
 
+			<h3>Overall Taps</h3>
 			<canvas id="myCanvas" width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
-
-			<canvas id="liveStreamCanvas" width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
-
-			
-
 		</div>
 
 
-		<div class = "legend">
-			<div class = "color" id="blue"></div>Dot 
-		</div>
-		<div class = "legend">
-			<div class = "color" id="pink"></div>Dash
-		</div>
+		<table class="legend">
+			<tr>
+				<th>Color</th>
+				<th>Category</th>
+			</tr>
+			<tr>
+				<td class="color" id="blue"></td>
+				<td>Dot</td>
+			</tr>
+			<tr>
+				<td class="color" id="pink"></td>
+				<td>Dash</td>
+			</tr>
+			<tr>
+				<td class="color" id="red"></td>
+				<td>Element Space</td>
+			</tr>
 
-		<div class = "legend">
-			<div class = "color" id="red"></div>Element Space
-		</div>
+			<tr>
+				<td class="color" id="green"></td>
+				<td>Character Space</td>
+			</tr>
+			<tr>
+				<td class="color" id="black"></td>
+				<td>Unclassified Signal</td>
+			</tr>
+		</table>
 
-		<div class = "legend">
-			<div class = "color" id="green"></div>Character Space
-		</div>
-
-		<div class = "legend">
-			<div class = "color" id="black"></div>Unclassified Signal
-		</div>
-		
-
-
+<!-- HIDING THIS BECAUSE WE DON'T NEED IT RIGHT NOW FOR DEMO PURPOSES
 		<div id = "timing">
 			<ul id ="log">
 
 			</ul>
-			
 		</div>
-		
+-->
 		
 
 	</body>

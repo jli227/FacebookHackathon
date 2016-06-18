@@ -43,13 +43,7 @@
         document.getElementById("confirmWord").onclick = confirmWord;
  
 
-        document.getElementById("clear").onclick = function() {
-            var lsCanvas = document.getElementById("liveStreamCanvas");
-            var ls = lsCanvas.getContext("2d");
-
-            ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
-            updatedEndPoint = 0;
-        };
+        document.getElementById("clear").onclick = clear;
 
         document.getElementById("codeInput").addEventListener("mousedown", mouseDown);
         document.getElementById("codeInput").addEventListener("mouseup", mouseUp);
@@ -87,12 +81,10 @@
                 var li = document.createElement("LI");
                 var textNode = document.createTextNode("Up for: " + elapsed + " ms");
                 li.appendChild(textNode);
-                document.getElementById("log").appendChild(li);
+                //document.getElementById("log").appendChild(li);
 
-                var div = document.getElementById("timing");
-                div.scrollTop = div.scrollHeight;
-
-                //drawLiveStream(elapsed);
+                //var div = document.getElementById("timing");
+                //div.scrollTop = div.scrollHeight;
 
                 morseSignals.push(morseNode);
                 endTiming = null;
@@ -112,13 +104,13 @@
         var li = document.createElement("LI");
         var textNode = document.createTextNode("Down for: " + elapsed + " ms");
         li.appendChild(textNode);
-        document.getElementById("log").appendChild(li);
+        //document.getElementById("log").appendChild(li);
 
         drawLiveStream(elapsed);
 
 
-        var div = document.getElementById("timing");
-        div.scrollTop = div.scrollHeight;
+        //var div = document.getElementById("timing");
+        //div.scrollTop = div.scrollHeight;
 
         morseSignals.push(morseNode);
         startTiming = null;
@@ -127,10 +119,8 @@
     var updatedEndPoint = 0;
     //draws the dots/dashes of each letter entered
     var drawLiveStream = function(timeElapsed) {
-        var width = 1000;
-        var height = 100;
         var strokeLength = parseInt(timeElapsed) / 10;
-        console.log("Strokelength: " + strokeLength);
+    
 
         var lsCanvas = document.getElementById("liveStreamCanvas");
         var ls = lsCanvas.getContext("2d");
@@ -142,12 +132,26 @@
         //x, y
         ls.lineTo(updatedEndPoint + strokeLength, 50);
         updatedEndPoint += strokeLength + 10;
+
+        console.log ("Width? " + lsCanvas.width);
+
+        // if (updatedEndPoint > lsCanvas.width) {
+        //     lsCanvas.width += 50;
+        // }
         
-        console.log("Update Endpoint: " + updatedEndPoint);
         ls.stroke();
 
     }
 
+    var clear = function() {
+        var lsCanvas = document.getElementById("liveStreamCanvas");
+        var ls = lsCanvas.getContext("2d");
+
+        ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
+        document.getElementById('letter').innerHTML = "";
+        lsCanvas.width = 1000;
+        updatedEndPoint = 0;
+    };
 
     var test = function() {
         endTiming = null;
@@ -155,10 +159,14 @@
         running.test();
 
         morseSignals = [];
+
+        updatedEndPoint += 50;
     };
 
 
     var train = function() {
+
+        clear();
 
         var trainingMorseCode = [];
 
@@ -241,22 +249,21 @@
         this.range();
         var elapsedRange = this.timeRange.max - this.timeRange.min;
 
-        var width = 1000;
-        var height = 100;
-
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
-        ctx.clearRect(0,0,width, height);
+        ctx.clearRect(0,0, c.width, c.height);
+
 
         ctx.beginPath();
-        ctx.moveTo(0, 42);
-        ctx.lineTo(1000, 42);
-        ctx.moveTo(0,85);
-        ctx.lineTo(1000,85);
+        ctx.moveTo(0, 50);
+        ctx.lineTo(1000, 50);
+        ctx.lineWidth = 0.5;
+        //ctx.moveTo(0,85);
+        //ctx.lineTo(1000,85);
         ctx.stroke();
 
         ctx.fillStyle = 'black';
-        ctx.font='12px Arial';
+        ctx.font='12px Lato';
         ctx.fillText(this.timeRange.min + "ms",0,98);
         ctx.font='12px Arial';
         ctx.fillText(this.timeRange.max + "ms",960,98);
@@ -265,23 +272,23 @@
 
             var normalX = (this.nodes[i].elapsedTime - this.timeRange.min)/elapsedRange;
 
-            var xPos = normalX * width;
+            var xPos = normalX * c.width;
             var yPos = 95;
 
             switch (this.nodes[i].category)
             {
                 case 'elementSpace':
-                    ctx.fillStyle = 'red';
+                    ctx.fillStyle = '#ff9457';
                     break;
                 case 'charSpace':
-                    ctx.fillStyle = 'green';
+                    ctx.fillStyle = '#6ad26d';
                     break;
                 case 'dot':
-                    ctx.fillStyle = 'blue';
+                    ctx.fillStyle = '#25b6b4';
                     break;
 
                 case 'dash':
-                    ctx.fillStyle = 'pink';
+                    ctx.fillStyle = '#a96bcc';
                     break;
 
                 default:
@@ -291,11 +298,11 @@
             switch (this.nodes[i].state)
             {
                 case 'on':
-                    yPos = 21;
+                    yPos = 27;
                     break;
 
                 default:
-                    yPos = 63;
+                    yPos = 70;
             }
             if (!this.nodes[i].category) {
                 if (this.nodes[i].state == 'on') {
