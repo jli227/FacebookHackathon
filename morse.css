@@ -85,3 +85,47 @@ input:focus {
     margin: auto;
     display: block;
 }
+
+.color {
+  display: inline-block;
+  width : 25px;
+  height : 25px;
+  border-radius: 25px;
+  border: 2px solid #a1a1a1;
+}
+
+.legend {
+
+  font-size: 10pt;
+}
+
+#red {
+
+  background-color: red;
+}
+
+#green {
+
+  background-color: green;
+
+}
+
+#blue {
+  background-color: blue;
+
+}
+
+#pink {
+
+  background-color: pink;
+
+}
+
+#black {
+  background-color: black;
+
+}
+
+.legend div {
+  vertical-align: middle;
+}

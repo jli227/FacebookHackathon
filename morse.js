@@ -203,6 +203,19 @@
         var ctx = c.getContext("2d");
         ctx.clearRect(0,0,width, height);
 
+        ctx.beginPath();
+        ctx.moveTo(0, 42);
+        ctx.lineTo(1000, 42);
+        ctx.moveTo(0,85);
+        ctx.lineTo(1000,85);
+        ctx.stroke();
+
+        ctx.fillStyle = 'black';
+        ctx.font='12px Arial';
+        ctx.fillText(this.timeRange.min + "ms",0,98);
+        ctx.font='12px Arial';
+        ctx.fillText(this.timeRange.max + "ms",960,98);
+
         for (var i in this.nodes) {
 
             var normalX = (this.nodes[i].elapsedTime - this.timeRange.min)/elapsedRange;
@@ -233,34 +246,27 @@
             switch (this.nodes[i].state)
             {
                 case 'on':
-                    yPos = 5;
+                    yPos = 21;
                     break;
 
                 default:
-                    yPos = 95;
-
+                    yPos = 63;
             }
-
             if (!this.nodes[i].category) {
                 if (this.nodes[i].state == 'on') {
-                    yPos = 25;
-
+                    yPos = 31;
                 } else {
-                    yPos = 75;
+                    yPos = 73;
                 }
             }
             ctx.beginPath();
             ctx.arc(xPos, yPos, 5, 0, 2 * Math.PI);
-            if (this.nodes[i].category || this.nodes[i].state == 'on') {
+            
 
-                ctx.fill();
-            } else {
-
-                ctx.stroke();
-            }
+            ctx.fill();
+            
             ctx.closePath();
         }
-
     };
 
     /*
