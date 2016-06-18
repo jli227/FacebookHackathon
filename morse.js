@@ -118,11 +118,11 @@
         var ls = lsCanvas.getContext("2d");
 
         ls.beginPath();
-        ls.moveTo(updatedEndPoint, 50);
+        ls.moveTo(updatedEndPoint, 30);
         ls.lineWidth = 3;
 
         //x, y
-        ls.lineTo(updatedEndPoint + strokeLength, 50);
+        ls.lineTo(updatedEndPoint + strokeLength, 30);
         updatedEndPoint += strokeLength + 10;
 
         console.log ("Width? " + lsCanvas.width);
@@ -161,11 +161,8 @@
         for (var i = 0; i < trainingWord.length; i++) {
 
             var character = trainingWord.charAt(i);
-
             console.log(character);
-
             console.log(morseDictionary[character]);
-
             trainingMorseCode = trainingMorseCode.concat(morseDictionary[character]);
         }
 
@@ -181,22 +178,19 @@
 
             if (morseSignals.length > 1) {
                 if (morseSignals.length < trainingMorseCode.length) {
-
-                    alert("The morse code you entered was shorter than the expected length given the word you typed");
-
+                    alert("The morse code you entered was shorter than the expected length given the word you typed. Please try again!");
                 } else if (morseSignals.length > trainingMorseCode.length) {
-
-                    alert("The morse code you entered was longer tha the expected legnth given the word you typed");
+                    alert("The morse code you entered was longer than the expected length given the word you typed. Please try again!");
                 } else {
                     for (var j in morseSignals) {
-
                         morseSignals[j].category = trainingMorseCode[j];
                     }
                     running = new run("train");
 
                     alert("Training Successful");
                     console.log(morseSignals);
-                    document.getElementById("train").disabled = true;
+                    document.getElementById("train").style.display = "none";
+                    document.getElementById('training').style.display = "none";
                     document.getElementById("test").disabled = false;
                     document.getElementById("letterDiv").style.display = "inline-block";
                 }
@@ -234,10 +228,9 @@
         var ctx = c.getContext("2d");
         ctx.clearRect(0,0, c.width, c.height);
 
-
         ctx.beginPath();
-        ctx.moveTo(0, 50);
-        ctx.lineTo(1000, 50);
+        ctx.moveTo(0, 60);
+        ctx.lineTo(1000, 60);
         ctx.lineWidth = 0.5;
         //ctx.moveTo(0,85);
         //ctx.lineTo(1000,85);
@@ -279,25 +272,21 @@
             switch (this.nodes[i].state)
             {
                 case 'on':
-                    yPos = 27;
+                    yPos = 30;
                     break;
-
                 default:
                     yPos = 70;
             }
             if (!this.nodes[i].category) {
                 if (this.nodes[i].state == 'on') {
-                    yPos = 31;
+                    yPos = 30;
                 } else {
-                    yPos = 73;
+                    yPos = 70;
                 }
             }
             ctx.beginPath();
             ctx.arc(xPos, yPos, 5, 0, 2 * Math.PI);
-            
-
             ctx.fill();
-            
             ctx.closePath();
         }
     };
