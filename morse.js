@@ -333,27 +333,78 @@
 
         this.nowKnownSignals = this.nodes.slice((this.numUnlabeled*-1));
 
+        console.log(this.nowKnownSignals);
+        var numCS = 1;
         for (var i in this.nowKnownSignals) {
             this.signalArray = this.signalArray.concat(this.nowKnownSignals[i].category);
+            if (this.nowKnownSignals[i].category == 'charSpace') {
+                numCS++;
+                console.log(this.signalArray);
+
+
+
+                for (var j in morseDictionary) {
+
+                    if (morseDictionary[j].length == this.signalArray.length) {
+                        console.log("asdfasdfasdfasdfasdf");
+                        this.match = true;
+                    for (var k in morseDictionary[j]) {
+
+                        if (this.signalArray[k] != morseDictionary[j][k]) {
+                            this.match = false;
+                        }
+                    }
+
+                    if (this.match) {
+                        document.getElementById("letter").innerHTML += j;
+                        this.signalArray = [];  
+                    }
+
+                    }
+
+                }
+
+            }
         }
 
         this.signalArray.push("charSpace");
+        console.log(numCS);
 
         for (var j in morseDictionary) {
 
-            if (morseDictionary[j].length == this.signalArray.length) {
-                this.match = true;
-                for (var k in morseDictionary[j]) {
-                    if (this.signalArray[k] != morseDictionary[j][k]) {
-                        this.match = false;
+                    if (morseDictionary[j].length == this.signalArray.length) {
+                        console.log("asdfasdfasdfasdfasdf");
+                        this.match = true;
+                    for (var k in morseDictionary[j]) {
+
+                        if (this.signalArray[k] != morseDictionary[j][k]) {
+                            this.match = false;
+                        }
                     }
+
+                    if (this.match) {
+                        document.getElementById("letter").innerHTML += j;
+                        this.signalArray = [];  
+                    }
+
+                    }
+
                 }
 
-                if (this.match) {
-                    document.getElementById("letter").innerHTML += j;
-                }
-            }
+        
+        console.log(this.signalArray);
+
+
+
+        for (var k = 0; k < numCS; k++) {
+
+
         }
+        
+        
+        
+
+        
     };
 
     NodeList.prototype.labelCategory = function() {
@@ -454,6 +505,7 @@
 
             nodes.draw();
             nodes.classify();
+            document.getElementById("letter").innerHTML += " "
             setTimeout(function() {nodes.draw();}, 2000);
         }
     };
