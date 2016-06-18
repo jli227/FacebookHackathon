@@ -15,9 +15,12 @@
 
 		<h1>Morsel</h1>
 
+		<br/>
+
 		<div id="centered">
-			<div id="wordDiv">
-				<input id="trainingWord" type="text" placeholder="Training Word">
+			<div class="form-group">
+				<label for="trainingWord">Training Word:</label>
+				<input class="form-control form-fixed-width" id="trainingWord" type="text" placeholder="Training Word">
 				<button class="btn btn-primary" id="confirmWord">Confirm</button>
 			</div>
 
@@ -41,44 +44,47 @@
 		</div>
 
 		<div id ="canvasDiv">
-
 			<h3>Dots/Dashes</h3>
 			<canvas id="liveStreamCanvas"  width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
 
 			<h3>Overall Taps</h3>
 			<canvas id="myCanvas" width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
-
-			
-
 		</div>
 
 
-		<div class = "legend">
-			<div class = "color" id="blue"></div>Dot 
-		</div>
-		<div class = "legend">
-			<div class = "color" id="pink"></div>Dash
-		</div>
+		<table class="legend">
+			<tr>
+				<th>Color</th>
+				<th>Category</th>
+			</tr>
+			<tr>
+				<td class="color" id="blue"></td>
+				<td>Dot</td>
+			</tr>
+			<tr>
+				<td class="color" id="pink"></td>
+				<td>Dash</td>
+			</tr>
+			<tr>
+				<td class="color" id="red"></td>
+				<td>Element Space</td>
+			</tr>
 
-		<div class = "legend">
-			<div class = "color" id="red"></div>Element Space
-		</div>
+			<tr>
+				<td class="color" id="green"></td>
+				<td>Character Space</td>
+			</tr>
+			<tr>
+				<td class="color" id="black"></td>
+				<td>Unclassified Signal</td>
+			</tr>
+		</table>
 
-		<div class = "legend">
-			<div class = "color" id="green"></div>Character Space
-		</div>
-
-		<div class = "legend">
-			<div class = "color" id="black"></div>Unclassified Signal
-		</div>
-		
-<!--
-HIDING FOR NOW SINCE WE DON'T NEED IT FOR DEMO PURPOSES
+<!-- HIDING THIS BECAUSE WE DON'T NEED IT RIGHT NOW FOR DEMO PURPOSES
 		<div id = "timing">
 			<ul id ="log">
 
 			</ul>
-			
 		</div>
 -->
 		
