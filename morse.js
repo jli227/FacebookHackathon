@@ -255,14 +255,15 @@
 
 
         ctx.beginPath();
-        ctx.moveTo(0, 42);
-        ctx.lineTo(1000, 42);
-        ctx.moveTo(0,85);
-        ctx.lineTo(1000,85);
+        ctx.moveTo(0, 50);
+        ctx.lineTo(1000, 50);
+        ctx.lineWidth = 0.5;
+        //ctx.moveTo(0,85);
+        //ctx.lineTo(1000,85);
         ctx.stroke();
 
         ctx.fillStyle = 'black';
-        ctx.font='12px Arial';
+        ctx.font='12px Lato';
         ctx.fillText(this.timeRange.min + "ms",0,98);
         ctx.font='12px Arial';
         ctx.fillText(this.timeRange.max + "ms",960,98);
@@ -277,17 +278,17 @@
             switch (this.nodes[i].category)
             {
                 case 'elementSpace':
-                    ctx.fillStyle = 'red';
+                    ctx.fillStyle = '#ff9457';
                     break;
                 case 'charSpace':
-                    ctx.fillStyle = 'green';
+                    ctx.fillStyle = '#6ad26d';
                     break;
                 case 'dot':
-                    ctx.fillStyle = 'blue';
+                    ctx.fillStyle = '#25b6b4';
                     break;
 
                 case 'dash':
-                    ctx.fillStyle = 'pink';
+                    ctx.fillStyle = '#a96bcc';
                     break;
 
                 default:
@@ -297,11 +298,11 @@
             switch (this.nodes[i].state)
             {
                 case 'on':
-                    yPos = 21;
+                    yPos = 27;
                     break;
 
                 default:
-                    yPos = 63;
+                    yPos = 70;
             }
             if (!this.nodes[i].category) {
                 if (this.nodes[i].state == 'on') {
