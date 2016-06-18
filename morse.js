@@ -43,6 +43,14 @@
         document.getElementById("confirmWord").onclick = confirmWord;
         document.getElementById("morseButton").addEventListener("mousedown", mouseDown);
         document.getElementById("morseButton").addEventListener("mouseup", mouseUp);
+
+        document.getElementById("clear").onclick = function() {
+            var lsCanvas = document.getElementById("liveStreamCanvas");
+            var ls = lsCanvas.getContext("2d");
+
+            ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
+            updatedEndPoint = 0;
+        };
     };
 
     var confirmWord = function() {
@@ -61,12 +69,15 @@
         }
     };
 
+
     var mouseDown = function() {
         if (!pressing) {
             pressing = true;
+
             document.getElementById('audio').play();
             startTiming = new Date();
             if (endTiming) {
+
                 var elapsed = Math.abs(startTiming - endTiming);
                 console.log("element space/character space:" + elapsed);
                 var morseNode = {elapsedTime: elapsed, state: "off", category: false};
@@ -79,7 +90,7 @@
                 var div = document.getElementById("timing");
                 div.scrollTop = div.scrollHeight;
 
-                drawLiveStream(elapsed);
+                //drawLiveStream(elapsed);
 
                 morseSignals.push(morseNode);
                 endTiming = null;
@@ -101,6 +112,9 @@
         li.appendChild(textNode);
         document.getElementById("log").appendChild(li);
 
+        drawLiveStream(elapsed);
+
+
         var div = document.getElementById("timing");
         div.scrollTop = div.scrollHeight;
 
@@ -108,25 +122,30 @@
         startTiming = null;
     };
 
+    var updatedEndPoint = 0;
     //draws the dots/dashes of each letter entered
     var drawLiveStream = function(timeElapsed) {
         var width = 1000;
         var height = 100;
         var strokeLength = parseInt(timeElapsed) / 10;
+        console.log("Strokelength: " + strokeLength);
 
         var lsCanvas = document.getElementById("liveStreamCanvas");
         var ls = lsCanvas.getContext("2d");
-        ls.clearRect(0,0,width, height);
 
-        //keep track of drawing location starting/ending point
-        //Average long dash is about 400ms
-        //to put it on the graph, let's divide it by 10?
         ls.beginPath();
-        ls.moveTo(0,50);
-        ls.lineTo(strokeLength, 50);
+        ls.moveTo(updatedEndPoint, 50);
+        ls.lineWidth = 3;
+
+        //x, y
+        ls.lineTo(updatedEndPoint + strokeLength, 50);
+        updatedEndPoint += strokeLength + 10;
+        
+        console.log("Update Endpoint: " + updatedEndPoint);
         ls.stroke();
 
     }
+
 
     var test = function() {
         endTiming = null;
