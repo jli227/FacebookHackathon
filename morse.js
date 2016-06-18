@@ -81,10 +81,10 @@
                 var li = document.createElement("LI");
                 var textNode = document.createTextNode("Up for: " + elapsed + " ms");
                 li.appendChild(textNode);
-                document.getElementById("log").appendChild(li);
+                //document.getElementById("log").appendChild(li);
 
-                var div = document.getElementById("timing");
-                div.scrollTop = div.scrollHeight;
+                //var div = document.getElementById("timing");
+                //div.scrollTop = div.scrollHeight;
 
                 morseSignals.push(morseNode);
                 endTiming = null;
@@ -104,13 +104,13 @@
         var li = document.createElement("LI");
         var textNode = document.createTextNode("Down for: " + elapsed + " ms");
         li.appendChild(textNode);
-        document.getElementById("log").appendChild(li);
+        //document.getElementById("log").appendChild(li);
 
         drawLiveStream(elapsed);
 
 
-        var div = document.getElementById("timing");
-        div.scrollTop = div.scrollHeight;
+        //var div = document.getElementById("timing");
+        //div.scrollTop = div.scrollHeight;
 
         morseSignals.push(morseNode);
         startTiming = null;
@@ -148,6 +148,7 @@
         var ls = lsCanvas.getContext("2d");
 
         ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
+        document.getElementById('letter').innerHTML = "";
         lsCanvas.width = 1000;
         updatedEndPoint = 0;
     };
