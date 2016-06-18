@@ -173,9 +173,7 @@
         console.log("training set: " + morseSignals.length);
         if (morseSignals.length == 0) {
             alert("Press the button to enter morse signals");
-
         } else {
-
             if (morseSignals.length > 1) {
                 if (morseSignals.length < trainingMorseCode.length) {
                     alert("The morse code you entered was shorter than the expected length given the word you typed. Please try again!");
@@ -352,52 +350,38 @@
     NodeList.prototype.constructWord = function() {
 
         this.signalArray = [];
-
         this.nowKnownSignals = this.nodes.slice((this.numUnlabeled*-1));
 
-        console.log(this.nowKnownSignals);
         var numCS = 1;
         for (var i in this.nowKnownSignals) {
             this.signalArray = this.signalArray.concat(this.nowKnownSignals[i].category);
             if (this.nowKnownSignals[i].category == 'charSpace') {
                 numCS++;
-                console.log(this.signalArray);
-
-
 
                 for (var j in morseDictionary) {
-
                     if (morseDictionary[j].length == this.signalArray.length) {
-                        console.log("asdfasdfasdfasdfasdf");
                         this.match = true;
-                    for (var k in morseDictionary[j]) {
+                        for (var k in morseDictionary[j]) {
+                            if (this.signalArray[k] != morseDictionary[j][k]) {
+                                this.match = false;
+                            }
+                        }
 
-                        if (this.signalArray[k] != morseDictionary[j][k]) {
-                            this.match = false;
+                        if (this.match) {
+                            document.getElementById("letter").innerHTML += j;
+                            this.signalArray = [];
                         }
                     }
-
-                    if (this.match) {
-                        document.getElementById("letter").innerHTML += j;
-                        this.signalArray = [];  
-                    }
-
-                    }
-
                 }
-
             }
         }
 
         this.signalArray.push("charSpace");
-        console.log(numCS);
 
         for (var l in morseDictionary) {
             if (morseDictionary[l].length == this.signalArray.length) {
-                console.log("asdfasdfasdfasdfasdf");
                 this.match = true;
                 for (var m in morseDictionary[l]) {
-
                     if (this.signalArray[m] != morseDictionary[l][m]) {
                         this.match = false;
                     }
@@ -409,14 +393,12 @@
                 }
             }
         }
-        console.log(this.signalArray);
     };
 
     NodeList.prototype.labelCategory = function() {
         var findMajority = {};
         for (var i in this.possibleNodes) {
             var keyVal = this.possibleNodes[i].category;
-            console.log(keyVal);
 
             if(findMajority.hasOwnProperty(keyVal)) {
                 findMajority[keyVal] = findMajority[keyVal] + 1;
@@ -465,7 +447,6 @@
         }
     };
 
-    //
     NodeList.prototype.range = function() {
         this.timeRange = {min: null, max: null};
 
@@ -490,8 +471,7 @@
         console.log("min: " + this.timeRange.min);
         console.log("max:" + this.timeRange.max);
     };
-
-    //
+    
     var run = function(mode) {
         if (mode == "train") {
             var nodes = new NodeList(3);
