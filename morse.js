@@ -201,9 +201,9 @@
 
                     alert("The morse code you entered was longer tha the expected legnth given the word you typed");
                 } else {
-                    for (var i in morseSignals) {
+                    for (var j in morseSignals) {
 
-                        morseSignals[i].category = trainingMorseCode[i];
+                        morseSignals[j].category = trainingMorseCode[j];
                     }
                     running = new run("train");
 
@@ -212,18 +212,13 @@
                     document.getElementById("train").disabled = true;
                     document.getElementById("test").disabled = false;
                     document.getElementById("letterDiv").style.display = "inline-block";
-
                 }
-
             } else {
-
                 alert("Your training word must have multiple morse signals. I recommend the word: hello" );
             }
-
         }
 
         morseSignals = [];
-
     };
 
 
@@ -420,41 +415,24 @@
         this.signalArray.push("charSpace");
         console.log(numCS);
 
-        for (var j in morseDictionary) {
+        for (var l in morseDictionary) {
+            if (morseDictionary[l].length == this.signalArray.length) {
+                console.log("asdfasdfasdfasdfasdf");
+                this.match = true;
+                for (var m in morseDictionary[l]) {
 
-                    if (morseDictionary[j].length == this.signalArray.length) {
-                        console.log("asdfasdfasdfasdfasdf");
-                        this.match = true;
-                    for (var k in morseDictionary[j]) {
-
-                        if (this.signalArray[k] != morseDictionary[j][k]) {
-                            this.match = false;
-                        }
+                    if (this.signalArray[m] != morseDictionary[l][m]) {
+                        this.match = false;
                     }
-
-                    if (this.match) {
-                        document.getElementById("letter").innerHTML += j;
-                        this.signalArray = [];  
-                    }
-
-                    }
-
                 }
 
-        
-        console.log(this.signalArray);
-
-
-
-        for (var k = 0; k < numCS; k++) {
-
-
+                if (this.match) {
+                    document.getElementById("letter").innerHTML += l;
+                    this.signalArray = [];
+                }
+            }
         }
-        
-        
-        
-
-        
+        console.log(this.signalArray);
     };
 
     NodeList.prototype.labelCategory = function() {

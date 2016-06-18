@@ -1,0 +1,13 @@
+{
+  "manifest_version": 1,
+  "name": "Morsel",
+  "version": "1.0.0",
+
+  "default-locale": "en",
+  "description": "By utilizing a machine learning algorithm, Morsel provides an interface for mobility impaired users to communicate using Morse code input.",
+
+  "browser_action": {
+    "default_icon": "morse.png",
+    "default_popup": "morse.html"
+  }
+}
