@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Morsel</title>
+		<title>Morse-ify</title>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -13,7 +13,7 @@
 	<body>
 		<audio id="audio" src="beep.wav"></audio>
 
-		<h1><img src="tap.png" alt="Tap">Morsel</h1>
+		<h1><img src="tap.png" alt="Tap">Morse-ify</h1>
 
 		<div id="centered">
 			<div class="form-group" id="training">
@@ -27,15 +27,14 @@
 					<div class="btn btn-info" id="codeInput">Input</div>
 					<div id ="buttonDiv">
 						<button class="btn btn-primary" id="train">Calibrate</button>
+						<button id="test" class="btn btn-success" disabled>Decode</button>
 						<button id="clear" class="btn btn-default">Clear</button>
 					</div>
 				</div>
-
+				<br>
 				<div id="letterDiv">
 					<legend class="Translated signals">Letters:</legend>
-					<textarea id="letter" rows="3" cols="25"></textarea>
-					<br/>
-					<button id="test" class="btn btn-success" disabled>Decode</button>
+					<h2 id="letter" rows="3" cols="25"></h2>
 				</div>
 			</div>
 		</div>
