@@ -53,11 +53,14 @@
     var spacebarDecode = function(event) {
         console.log(event.keyCode);
         if (event.keyCode == 32) { 
-            console.log("entered");
-            test();
+
+            if (document.getElementById('test').getAttribute('disabled') == false) {
+                train();
+            } else {
+                test();
+            }     
         }
 
-    
     };
 
 
@@ -304,7 +307,7 @@
                     yPos = 40;
                 } else {
 
-                    yPos = 80;
+                    yPos = 90;
                 }
             }
             ctx.beginPath();
@@ -367,9 +370,10 @@
                 console.log("after: " + JSON.stringify(this.nodes, null, 4));
 
             }
+            this.constructWord();
         }
 
-        this.constructWord();
+        
     };
 
     NodeList.prototype.constructWord = function() {
@@ -417,6 +421,9 @@
                 }
             }
         }
+
+        this.signalArray = [];
+        this.nowKnownSignals = [];
     };
 
     NodeList.prototype.labelCategory = function() {
