@@ -41,8 +41,7 @@
         document.getElementById("train").onclick = train;
         document.getElementById("test").onclick = test;
         document.getElementById("confirmWord").onclick = confirmWord;
-        document.getElementById("morseButton").addEventListener("mousedown", mouseDown);
-        document.getElementById("morseButton").addEventListener("mouseup", mouseUp);
+ 
 
         document.getElementById("clear").onclick = function() {
             var lsCanvas = document.getElementById("liveStreamCanvas");
@@ -51,6 +50,9 @@
             ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
             updatedEndPoint = 0;
         };
+
+        document.getElementById("codeInput").addEventListener("mousedown", mouseDown);
+        document.getElementById("codeInput").addEventListener("mouseup", mouseUp);
     };
 
     var confirmWord = function() {
