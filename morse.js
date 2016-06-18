@@ -43,14 +43,7 @@
         document.getElementById("confirmWord").onclick = confirmWord;
  
 
-        document.getElementById("clear").onclick = function() {
-            var lsCanvas = document.getElementById("liveStreamCanvas");
-            var ls = lsCanvas.getContext("2d");
-
-            ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
-            lsCanvas.width = 1000;
-            updatedEndPoint = 0;
-        };
+        document.getElementById("clear").onclick = clear;
 
         document.getElementById("codeInput").addEventListener("mousedown", mouseDown);
         document.getElementById("codeInput").addEventListener("mouseup", mouseUp);
@@ -142,14 +135,22 @@
 
         console.log ("Width? " + lsCanvas.width);
 
-        if (updatedEndPoint > lsCanvas.width) {
-            lsCanvas.width += 50;
-        }
+        // if (updatedEndPoint > lsCanvas.width) {
+        //     lsCanvas.width += 50;
+        // }
         
         ls.stroke();
 
     }
 
+    var clear = function() {
+        var lsCanvas = document.getElementById("liveStreamCanvas");
+        var ls = lsCanvas.getContext("2d");
+
+        ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
+        lsCanvas.width = 1000;
+        updatedEndPoint = 0;
+    };
 
     var test = function() {
         endTiming = null;
@@ -163,6 +164,8 @@
 
 
     var train = function() {
+
+        clear();
 
         var trainingMorseCode = [];
 
@@ -245,12 +248,10 @@
         this.range();
         var elapsedRange = this.timeRange.max - this.timeRange.min;
 
-        var width = 1000;
-        var height = 100;
-
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
-        ctx.clearRect(0,0,width, height);
+        ctx.clearRect(0,0, c.width, c.height);
+
 
         ctx.beginPath();
         ctx.moveTo(0, 42);
@@ -269,7 +270,7 @@
 
             var normalX = (this.nodes[i].elapsedTime - this.timeRange.min)/elapsedRange;
 
-            var xPos = normalX * width;
+            var xPos = normalX * c.width;
             var yPos = 95;
 
             switch (this.nodes[i].category)

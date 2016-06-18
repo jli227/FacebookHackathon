@@ -26,8 +26,8 @@
 					<div class="btn btn-info" id="codeInput">Input</div>
 					<div id ="buttonDiv">
 
-						<button class="btn btn-primary" id="train">train</button>
-						<button id="test" disabled>test</button>
+						<button class="btn btn-primary" id="train">Train</button>
+						<button id="test" class="btn btn-success" disabled>Test</button>
 
 						<button id ="clear" class="btn btn-default">CLEAR</button>
 					</div>
@@ -40,11 +40,13 @@
 			</div>
 		</div>
 
-		<div id ="canvasDiv" style="overflow-x:scroll;">
+		<div id ="canvasDiv">
 
+			<h3>Dots/Dashes</h3>
+			<canvas id="liveStreamCanvas"  width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+			<h3>Overall Taps</h3>
 			<canvas id="myCanvas" width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
-
-			<canvas id="liveStreamCanvas" width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
 
 			
 
