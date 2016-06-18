@@ -1,4 +1,4 @@
-# Morse-ify
+# Morse Decode
 #### By Matt Yang, Brittney Hoy, and Jonathan Li
 ---------
 
@@ -8,4 +8,4 @@ Certain types of mobility impairments limit the types of actions that the user c
 
 --------
 
-By utilizing a machine learning algorithm, Morse-ify provides an interface for mobility impaired users to communicate using Morse code input.
+By utilizing a machine learning algorithm, Morse Decode provides an interface for mobility impaired users to communicate using Morse code input.

@@ -41,8 +41,7 @@
         document.getElementById("train").onclick = train;
         document.getElementById("test").onclick = test;
         document.getElementById("confirmWord").onclick = confirmWord;
- 
-
+        document.getElementById("copy").onclick = copy;
         document.getElementById("clear").onclick = clear;
 
         document.getElementById("codeInput").addEventListener("mousedown", mouseDown);
@@ -61,8 +60,21 @@
             }     
         }
 
+
+      
     };
 
+    var copy = function(e) {
+        var t = e.target,
+            c = t.dataset.copytarget,
+            input = (c ? document.querySelector(c) : null),
+            range = document.createRange(),
+            selection = window.getSelection();
+        range.selectNodeContents(input);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+    };
 
     var confirmWord = function() {
         trainingWord = document.getElementById("trainingWord").value;
@@ -80,7 +92,6 @@
         }
     };
 
-
     var mouseDown = function() {
         if (!pressing) {
             pressing = true;
@@ -90,7 +101,6 @@
             if (endTiming) {
 
                 var elapsed = Math.abs(startTiming - endTiming);
-                console.log("element space/character space:" + elapsed);
                 var morseNode = {elapsedTime: elapsed, state: "off", category: false};
 
                 var li = document.createElement("LI");
@@ -109,7 +119,6 @@
         document.getElementById('audio').currentTime = 0;
         endTiming = new Date();
         var elapsed = Math.abs(endTiming-startTiming);
-        console.log("dot/dash:" + elapsed);
         var morseNode = {elapsedTime: elapsed, state: "on", category: false};
 
         var li = document.createElement("LI");
@@ -140,7 +149,6 @@
         ls.lineTo(updatedEndPoint + strokeLength, 30);
         updatedEndPoint += strokeLength + 10;
 
-        console.log ("Width? " + lsCanvas.width);
         ls.stroke();
     };
 
@@ -176,16 +184,11 @@
         for (var i = 0; i < trainingWord.length; i++) {
 
             var character = trainingWord.charAt(i);
-            console.log(character);
-            console.log(morseDictionary[character]);
             trainingMorseCode = trainingMorseCode.concat(morseDictionary[character]);
         }
 
         trainingMorseCode.pop(); //remove extra charSpace
 
-        console.log("training morse code length : " + trainingMorseCode.length);
-
-        console.log("training set: " + morseSignals.length);
         if (morseSignals.length == 0) {
             alert("Press the button to enter morse signals");
         } else {
@@ -199,13 +202,11 @@
                         morseSignals[j].category = trainingMorseCode[j];
                     }
                     running = new run("train");
-                    console.log(morseSignals);
+
                     document.getElementById("train").style.display = "none";
                     document.getElementById('training').style.display = "none";
                     document.getElementById("test").disabled = false;
                     document.getElementById("test").style.display = "inline-block";
-
-
                     document.getElementById("letterDiv").style.display = "inline-block";
                 }
             } else {
@@ -246,16 +247,14 @@
         ctx.moveTo(0, 60);
         ctx.lineTo(1000, 60);
         ctx.lineWidth = 0.5;
-        //ctx.moveTo(0,85);
-        //ctx.lineTo(1000,85);
         ctx.stroke();
 
         ctx.fillStyle = 'black';
         ctx.font='12px Lato';
 
-        ctx.fillText(this.timeRange.min + "ms",0,110);
+        ctx.fillText(this.timeRange.min + "ms",0,115);
         ctx.font='12px Arial';
-        ctx.fillText(this.timeRange.max + "ms",960,110);
+        ctx.fillText(this.timeRange.max + "ms",960,115);
         var categorizing = false;
 
         for (var i in this.nodes) {
@@ -292,22 +291,21 @@
                     yPos = 30;
                     break;
                 default:
-
-                    yPos = 80;
+                    yPos = 90;
             }
             if (!this.nodes[i].category) {
                 if (!categorizing) {
                     console.log("category");
                     categorizing = true;
                     ctx.font = "11px Georgia";
-                    ctx.fillText("Classifying Unknown Signals..",0, 10);
-
+                    ctx.fillText("Classifying Unknown Signals..", 0, 10);
                 }
                 if (this.nodes[i].state == 'on') {
-                    yPos = 40;
+                    yPos = 20;
                 } else {
 
                     yPos = 90;
+
                 }
             }
             ctx.beginPath();
@@ -329,10 +327,6 @@
                 this.unknownNode.push(this.nodes[i]);
             }
         }
-        for (var j in this.unknownNode) {
-            console.log("unknown node-> " + "Elapsed Time: " + this.unknownNode[j].elapsedTime +
-            ", Category: " + this.unknownNode[j].category + ", State: " + this.unknownNode[j].state);
-        }
     };
 
     /*
@@ -346,7 +340,6 @@
         this.getUnknown();
 
         this.numUnlabeled = this.unknownNode.length;
-        console.log("numbered of unlabeled: " + this.numUnlabeled);
 
         if (this.numUnlabeled > 0) {
             for(var i in this.unknownNode) {
@@ -367,8 +360,6 @@
                     }
                 }
                 this.labelCategory();
-                console.log("after: " + JSON.stringify(this.nodes, null, 4));
-
             }
             this.constructWord();
         }
@@ -377,7 +368,6 @@
     };
 
     NodeList.prototype.constructWord = function() {
-
         this.signalArray = [];
         this.nowKnownSignals = this.nodes.slice((this.numUnlabeled*-1));
 
@@ -446,8 +436,6 @@
     };
 
     NodeList.prototype.determineClosest = function(unknown) {
-        console.log("unknown node-> " + "Elapsed Time: " + unknown.elapsedTime +
-            ", Category: " + unknown.category + ", State: " + unknown.state);
         this.queryElapsedTime = unknown.elapsedTime;
         this.closest = [];
 
@@ -498,9 +486,6 @@
                 this.timeRange.min = this.nodes[i].elapsedTime;
             }
         }
-
-        console.log("min: " + this.timeRange.min);
-        console.log("max:" + this.timeRange.max);
     };
     
     var run = function(mode) {
@@ -509,19 +494,19 @@
         }
 
         for (var i in morseSignals) {
-            nodes.add( new Node(morseSignals[i]) );
+            nodes.add(new Node(morseSignals[i]));
         }
 
         nodes.draw();
 
         this.test = function() {
             for (var j in morseSignals) {
-                nodes.add(new Node(morseSignals[j]) );
+                nodes.add(new Node(morseSignals[j]));
             }
 
             nodes.draw();
             nodes.classify();
-            document.getElementById("letter").innerHTML += " "
+            document.getElementById("letter").innerHTML += " ";
             setTimeout(function() {nodes.draw();}, 3000);
         }
     };
