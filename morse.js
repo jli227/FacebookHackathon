@@ -48,6 +48,7 @@
             var ls = lsCanvas.getContext("2d");
 
             ls.clearRect(0, 0, lsCanvas.width, lsCanvas.height);
+            lsCanvas.width = 1000;
             updatedEndPoint = 0;
         };
 
@@ -92,8 +93,6 @@
                 var div = document.getElementById("timing");
                 div.scrollTop = div.scrollHeight;
 
-                //drawLiveStream(elapsed);
-
                 morseSignals.push(morseNode);
                 endTiming = null;
             }
@@ -127,10 +126,8 @@
     var updatedEndPoint = 0;
     //draws the dots/dashes of each letter entered
     var drawLiveStream = function(timeElapsed) {
-        var width = 1000;
-        var height = 100;
         var strokeLength = parseInt(timeElapsed) / 10;
-        console.log("Strokelength: " + strokeLength);
+    
 
         var lsCanvas = document.getElementById("liveStreamCanvas");
         var ls = lsCanvas.getContext("2d");
@@ -142,8 +139,13 @@
         //x, y
         ls.lineTo(updatedEndPoint + strokeLength, 50);
         updatedEndPoint += strokeLength + 10;
+
+        console.log ("Width? " + lsCanvas.width);
+
+        if (updatedEndPoint > lsCanvas.width) {
+            lsCanvas.width += 50;
+        }
         
-        console.log("Update Endpoint: " + updatedEndPoint);
         ls.stroke();
 
     }
@@ -155,6 +157,8 @@
         running.test();
 
         morseSignals = [];
+
+        updatedEndPoint += 50;
     };
 
 
