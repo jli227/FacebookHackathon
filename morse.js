@@ -50,9 +50,18 @@
     };
 
     var spacebarDecode = function(event) {
-        if (event.keyCode == 32) {
-            test();
+        console.log(event.keyCode);
+        if (event.keyCode == 32) { 
+
+            if (document.getElementById('test').getAttribute('disabled') == false) {
+                train();
+            } else {
+                test();
+            }     
         }
+
+
+      
     };
 
     var copy = function(e) {
@@ -291,7 +300,9 @@
                 if (this.nodes[i].state == 'on') {
                     yPos = 20;
                 } else {
+
                     yPos = 80;
+
                 }
             }
             ctx.beginPath();
@@ -347,9 +358,10 @@
                 }
                 this.labelCategory();
             }
+            this.constructWord();
         }
 
-        this.constructWord();
+        
     };
 
     NodeList.prototype.constructWord = function() {
@@ -396,6 +408,9 @@
                 }
             }
         }
+
+        this.signalArray = [];
+        this.nowKnownSignals = [];
     };
 
     NodeList.prototype.labelCategory = function() {
