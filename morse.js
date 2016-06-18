@@ -78,6 +78,8 @@
                 var div = document.getElementById("timing");
                 div.scrollTop = div.scrollHeight;
 
+                drawLiveStream(elapsed);
+
                 morseSignals.push(morseNode);
                 endTiming = null;
             }
@@ -103,6 +105,26 @@
         morseSignals.push(morseNode);
         startTiming = null;
     };
+
+    //draws the dots/dashes of each letter entered
+    var drawLiveStream = function(timeElapsed) {
+        var width = 1000;
+        var height = 100;
+        var strokeLength = parseInt(timeElapsed) / 10;
+
+        var lsCanvas = document.getElementById("liveStreamCanvas");
+        var ls = lsCanvas.getContext("2d");
+        ls.clearRect(0,0,width, height);
+
+        //keep track of drawing location starting/ending point
+        //Average long dash is about 400ms
+        //to put it on the graph, let's divide it by 10?
+        ls.beginPath();
+        ls.moveTo(0,50);
+        ls.lineTo(strokeLength, 50);
+        ls.stroke();
+
+    }
 
     var test = function() {
         endTiming = null;
