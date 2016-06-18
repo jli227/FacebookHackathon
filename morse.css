@@ -121,9 +121,7 @@ input:focus {
 }
 
 #pink {
-
   background-color: pink;
-
 }
 
 #black {
@@ -133,4 +131,13 @@ input:focus {
 
 .legend div {
   vertical-align: middle;
+}
+
+table {
+    margin: auto;
+}
+
+td, th {
+    padding: 5px;
+    text-align: center;
 }
