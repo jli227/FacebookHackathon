@@ -70,6 +70,12 @@ h3 {
 #letterDiv {
 	display: none;
 }
+
+#letter {
+    background: none;
+    border: none;
+}
+
 input:focus {
     outline:none;
 }

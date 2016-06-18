@@ -1,9 +1,18 @@
 {
   "manifest_version": 2,
-  "name": "Morse-ify",
+  "name": "Morse Decode",
   "version": "1.0.0",
 
-  "description": "Using a machine learning algorithm, Morse-ify provides an interface for mobility impaired users to communicate using Morse code input.",
+//  "background": {
+//    "persistent": false,
+//    "scripts": ["background.js"]
+//  },
+//
+//  "content_scripts": [{
+//    "js": ["content.js"]
+//  }],
+
+  "description": "Using a machine learning algorithm, Morse Decode provides an interface for mobility impaired users to communicate using Morse code input.",
 
   "browser_action": {
     "default_icon": "morse.png",
@@ -11,6 +20,15 @@
   },
 
   "permissions": [
-    "identity"
-  ]
+    "identity", "tabs"
+  ],
+
+//  "commands": {
+//    "content-paste": {
+//      "suggested_key": {
+//        "default": "Ctrl+Shift+V"
+//      },
+//      "description": "Paste from decoded Morse code"
+//    }
+//  }
 }

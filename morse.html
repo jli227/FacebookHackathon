@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Morse-ify</title>
+		<title>Morse Decode</title>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -13,7 +13,7 @@
 	<body>
 		<audio id="audio" src="beep.wav"></audio>
 
-		<h1><img src="tap.png" alt="Tap">Morse-ify</h1>
+		<h1><img src="tap.png" alt="Tap">Morse Decode</h1>
 
 		<div id="centered">
 			<div class="form-group" id="training">
@@ -34,7 +34,8 @@
 				<br>
 				<div id="letterDiv">
 					<legend class="Translated signals">Letters:</legend>
-					<h2 id="letter" rows="3" cols="25"></h2>
+					<h2 id="letter"></h2>
+					<button class="btn btn-default" id="copy" data-copytarget="#letter">Copy to clipboard</button>
 				</div>
 			</div>
 		</div>
@@ -42,7 +43,6 @@
 		<div id ="canvasDiv">
 			<h3>Dots/Dashes</h3>
 			<canvas id="liveStreamCanvas" width="1000" height="60" ></canvas>
-
 
 			<h3>All Signals</h3>
 			<canvas id="myCanvas" width="1000" height="120"></canvas>
@@ -73,7 +73,5 @@
 			</ul>
 		</div>
 -->
-		
-
 	</body>
 </html>
