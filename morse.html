@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Morse</title>
+		<link rel="stylesheet" type="text/css" href="morse.css">
+		<script src="morse.js" type="text/javascript"></script>
+
+	</head>
+
+	<body>
+		<audio id="audio" src = ></audio>
+
+
+		<div id ="centered">
+			<div id ="wordDiv">
+				<input id ="trainingWord" type="text" placeholder="Training Word">
+				<button id ="confirmWord">Confirm</button>
+			</div>
+
+			<div id="displayDiv">
+
+				<div id ="morseInput">
+					<button id="morseButton">Input</button>
+					<div id ="buttonDiv">
+						<button id ="train">train</button>
+						<button id ="test" disabled>test</button>
+					</div>
+
+				</div>
+
+				<div id="letterDiv">
+					<legend class="Translated signals">Letters: </legend>
+					<textarea id="letter" rows="3" cols="25"></textarea>
+				</div> 
+			</div>
+
+		</div>
+
+
+
+		
+
+
+		<div id ="canvasDiv">
+
+			<canvas id="myCanvas" width="1000" height="100" style="border:1px solid #d3d3d3;"></canvas>
+		</div>
+
+		<div id = "timing">
+			<ul id ="log">
+
+			</ul>
+			
+		</div>
+		
+		
+
+	</body>
+</html>
