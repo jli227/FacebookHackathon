@@ -27,15 +27,14 @@
 					<div class="btn btn-info" id="codeInput">Input</div>
 					<div id ="buttonDiv">
 						<button class="btn btn-primary" id="train">Calibrate</button>
+						<button id="test" class="btn btn-success" disabled>Decode</button>
 						<button id="clear" class="btn btn-default">Clear</button>
 					</div>
 				</div>
-
+				<br>
 				<div id="letterDiv">
 					<legend class="Translated signals">Letters:</legend>
-					<textarea id="letter" rows="3" cols="25"></textarea>
-					<br/>
-					<button id="test" class="btn btn-success" disabled>Decode</button>
+					<h2 id="letter" rows="3" cols="25"></h2>
 				</div>
 			</div>
 		</div>
@@ -44,7 +43,8 @@
 			<h3>Dots/Dashes</h3>
 			<canvas id="liveStreamCanvas" width="1000" height="60" ></canvas>
 
-			<h3>All Morse Signals</h3>
+
+			<h3>All Signals</h3>
 			<canvas id="myCanvas" width="1000" height="120"></canvas>
 		</div>
 

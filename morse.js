@@ -196,8 +196,6 @@
                         morseSignals[j].category = trainingMorseCode[j];
                     }
                     running = new run("train");
-
-                    alert("Training Successful");
                     console.log(morseSignals);
                     document.getElementById("train").style.display = "none";
                     document.getElementById('training').style.display = "none";
@@ -251,10 +249,10 @@
 
         ctx.fillStyle = 'black';
         ctx.font='12px Lato';
-        ctx.fillText(this.timeRange.min + "ms",0,115);
+
+        ctx.fillText(this.timeRange.min + "ms",0,110);
         ctx.font='12px Arial';
-        ctx.fillText(this.timeRange.max + "ms",960,115);
-        var categorizing = false;
+        ctx.fillText(this.timeRange.max + "ms",960,110);
 
         for (var i in this.nodes) {
 
@@ -290,7 +288,8 @@
                     yPos = 30;
                     break;
                 default:
-                    yPos = 90;
+
+                    yPos = 80;
             }
             if (!this.nodes[i].category) {
                 if (!categorizing) {
@@ -303,7 +302,8 @@
                 if (this.nodes[i].state == 'on') {
                     yPos = 40;
                 } else {
-                    yPos = 100;
+
+                    yPos = 80;
                 }
             }
             ctx.beginPath();
