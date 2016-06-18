@@ -253,6 +253,7 @@
         ctx.fillText(this.timeRange.min + "ms",0,110);
         ctx.font='12px Arial';
         ctx.fillText(this.timeRange.max + "ms",960,110);
+        var categorizing = false;
 
         for (var i in this.nodes) {
 
