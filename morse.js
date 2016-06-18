@@ -210,8 +210,11 @@
 
                     alert("Training Successful");
                     console.log(morseSignals);
-                    document.getElementById("train").disabled = true;
+                    document.getElementById("train").style.display = "none";
                     document.getElementById("test").disabled = false;
+                    document.getElementById("test").style.display = "inline-block";
+
+
                     document.getElementById("letterDiv").style.display = "inline-block";
 
                 }
@@ -267,6 +270,7 @@
         ctx.fillText(this.timeRange.min + "ms",0,98);
         ctx.font='12px Arial';
         ctx.fillText(this.timeRange.max + "ms",960,98);
+        var categorizing = false;
 
         for (var i in this.nodes) {
 
@@ -275,6 +279,7 @@
             var xPos = normalX * c.width;
             var yPos = 95;
 
+            
             switch (this.nodes[i].category)
             {
                 case 'elementSpace':
@@ -305,10 +310,17 @@
                     yPos = 70;
             }
             if (!this.nodes[i].category) {
+                if (!categorizing) {
+                    console.log("category");
+                    categorizing = true;
+                    ctx.font = "11px Georgia";
+                    ctx.fillText("Classifying Unknown Signals..",0, 10);
+
+                }
                 if (this.nodes[i].state == 'on') {
-                    yPos = 31;
+                    yPos = 37;
                 } else {
-                    yPos = 73;
+                    yPos = 80;
                 }
             }
             ctx.beginPath();
@@ -398,7 +410,6 @@
                 for (var j in morseDictionary) {
 
                     if (morseDictionary[j].length == this.signalArray.length) {
-                        console.log("asdfasdfasdfasdfasdf");
                         this.match = true;
                     for (var k in morseDictionary[j]) {
 
@@ -413,9 +424,7 @@
                     }
 
                     }
-
                 }
-
             }
         }
 
@@ -425,7 +434,6 @@
         for (var j in morseDictionary) {
 
                     if (morseDictionary[j].length == this.signalArray.length) {
-                        console.log("asdfasdfasdfasdfasdf");
                         this.match = true;
                     for (var k in morseDictionary[j]) {
 
@@ -445,7 +453,6 @@
 
         
         console.log(this.signalArray);
-    
         
     };
 
@@ -548,7 +555,7 @@
             nodes.draw();
             nodes.classify();
             document.getElementById("letter").innerHTML += " "
-            setTimeout(function() {nodes.draw();}, 2000);
+            setTimeout(function() {nodes.draw();}, 3000);
         }
     };
 }());
