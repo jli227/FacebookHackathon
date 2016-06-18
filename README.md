@@ -1,5 +1,5 @@
 # Morsel
-### By Matthew Yang, Brittney Hoy, and Jonathan Li
+#### By Matt Yang, Brittney Hoy, and Jonathan Li
 ---------
 
 People with mobility impairments may have difficulties with communication and operating electronic devices such as phones and computers. Fortunately, there are assistive technologies available to help people with mobility impairments effectively use technology.
