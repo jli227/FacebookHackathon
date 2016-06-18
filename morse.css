@@ -1,35 +1,42 @@
 body {
-	font-family: sans-serif;
+	font-family: "Open Sans", sans-serif;
+    text-align: center;
 }
 
-#morseButton {
-  display: inline-block;
-  padding: 10px 15px;
-  font-size: 15px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: white;
-  background-color: #6FD656;
-  border: none;
-  border-radius: 50px;
-
+#codeInput {
+    border: 1px solid black;
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 15px;
 }
 
-#morseButton:active {
-  background-color: #5BB844;
-  transform: translateY(4px);
-}
+/*#morseButton {*/
+  /*display: inline-block;*/
+  /*padding: 10px 15px;*/
+  /*font-size: 15px;*/
+  /*cursor: pointer;*/
+  /*text-align: center;*/
+  /*text-decoration: none;*/
+  /*outline: none;*/
+  /*color: white;*/
+  /*background-color: #6FD656;*/
+  /*border: none;*/
+  /*border-radius: 50px;*/
+/*}*/
+
+/*#morseButton:active {*/
+  /*background-color: #5BB844;*/
+  /*transform: translateY(4px);*/
+/*}*/
 
 #morseInput {
 	display: none;
 	padding: 5px;
-	
 }
 
 #letter {
-
 	border: 1px solid #bfbfbf;
 	border-radius: 5px;
 }
@@ -54,12 +61,10 @@ body {
 
 #wordDiv {
 	text-align: center;
-
 }
 
 #letterDiv {
 	display: none;
-
 }
 
 input[type=text] {
